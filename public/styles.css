@@ -1,42 +1,225 @@
 * {
-    font-family: 'Lato', Helvetica, sans-serif;
-    color: #333447;
-    line-height: 1.5;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  h1 {
-    text-align: center;
-  }
-  
-  input {
-    padding: .5em .6em;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-shadow: inset 0 1px 3px #ddd;
-    border-radius: 4px;
-    vertical-align: middle;
-    box-sizing: border-box;
-    width: 300px;
-  }
-  
-  form {
-    margin-bottom: 10px;
-  }
-  
-  button {
-    height: 31px;
-    width: 110px;
-    text-align: center;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 200;
-    background: transparent;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    margin: 20px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-    border: 1px solid #FE7880;
-    color: #FE7880;
-  }
+body {
+  font-family: "Instrument Serif", serif;
+  color: #1a1a1a;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* shared card styles */
+form, .gif-item, .empty-state {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+/* shared gradient */
+h1::after, .gradient-accent {
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899, #f59e0b);
+}
+
+/* header */
+.hero-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3.5rem;
+  font-family: "Barriecito", system-ui;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+h1 a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+h1 a:hover {
+  opacity: 0.8;
+}
+
+h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  margin: 1.5rem auto 3rem;
+  border-radius: 1px;
+}
+
+/* form */
+form {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+input, button {
+  padding: 1rem 1.5rem;
+  border: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+input {
+  flex: 1;
+  font-size: 1.3rem;
+  border-radius: 12px 0 0 12px;
+  background: transparent;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+button {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+  border-radius: 0 12px 12px 0;
+  cursor: pointer;
+  white-space: nowrap;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(99,102,241,0.4);
+  background: linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* grid */
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.gif-item {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.gif-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  border-color: #e5e7eb;
+}
+
+.tenor-gif-embed {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* empty state */
+.empty-state {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 4rem 2rem;
+}
+
+.empty-state p {
+  color: #6b7280;
+  font-size: 1.5rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.suggestions {
+  margin-top: 1rem;
+}
+
+.suggestion-label {
+  color: #9ca3af;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.suggestion-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.tag {
+  background: rgba(255,255,255,0.9);
+  color: #475569;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(148,163,184,0.25);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(20px);
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.tag:hover, button:hover {
+  transform: translateY(-1px);
+}
+
+.tag:hover {
+  background: rgba(255,255,255,1);
+  border-color: rgba(99,102,241,0.3);
+  box-shadow: 0 4px 15px rgba(99,102,241,0.1);
+  color: #334155;
+}
+

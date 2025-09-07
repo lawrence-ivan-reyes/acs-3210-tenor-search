@@ -1,13 +1,41 @@
-<h1>Search for GIFS</h1>
+<h1><a href="/">GIF Search</a></h1>
+
 <form action="/">
-  <input type="text" name="term">
+  <input type="text" name="term" placeholder="Enter search term...">
   <button type="submit">Search</button>
 </form>
 
-{{#each gifs}}
-<div class="tenor-gif-embed" data-postid="{{this.id}}" data-share-method="host" data-width="500px"
-  data-aspect-ratio="1.2266666666666666">
-      href="{{this.itemurl}}"></a>
-  <a href="{{this.url}}"></a></div>
-<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-{{/each}}
+{{#if gifs}}
+  {{#if gifs.length}}
+    <div class="gif-grid">
+      {{#each gifs}}
+      <div class="gif-item">
+        <div class="tenor-gif-embed" data-postid="{{this.id}}" data-share-method="host" data-width="100%"
+          data-aspect-ratio="1.2266666666666666">
+            <a href="{{this.itemurl}}"></a>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+  {{else}}
+    <div class="empty-state">
+      <p>No GIFs found. Try a different search term!</p>
+    </div>
+  {{/if}}
+{{else}}
+  <div class="empty-state">
+    <p>Start by searching for your favorite GIFs above!</p>
+    <div class="suggestions">
+      <span class="suggestion-label">Or, try out these popular search terms:</span>
+      <div class="suggestion-tags">
+        <a href="/?term=cats" class="tag">cats</a>
+        <a href="/?term=dogs" class="tag">dogs</a>
+        <a href="/?term=funny" class="tag">funny</a>
+        <a href="/?term=dancing" class="tag">dancing</a>
+        <a href="/?term=happy" class="tag">happy</a>
+        <a href="/?term=excited" class="tag">excited</a>
+      </div>
+    </div>
+  </div>
+{{/if}}

@@ -27,15 +27,17 @@ app.set('views', './views');
 
 // Routes
 app.get('/', (req, res) => {
-    let term = ""
-    if (req.query.term) {
-        term = req.query.term
+    if (req.query.term && req.query.term.trim()) {
+        const term = req.query.term.trim();
+        Tenor.Search.Query(term, "10")
+            .then(response => {
+                const gifs = response;
+                res.render('home', { gifs })
+            }).catch(console.error);
+    } else {
+        // if no search term, render empty state
+        res.render('home', { gifs: null });
     }
-    Tenor.Search.Query(term, "10")
-        .then(response => {
-            const gifs = response;
-            res.render('home', { gifs })
-        }).catch(console.error);
 })
 
 app.get('/greetings/:name', (req, res) => {
