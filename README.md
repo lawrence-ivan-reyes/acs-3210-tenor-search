@@ -2,6 +2,8 @@
 
 A web application for searching and displaying GIFs using the [Tenor API](https://tenor.com/gifapi/documentation). Built with Express.js and Handlebars templating engine.
 
+![GIF Search Demo](./assets/demo-gif.gif)
+
 ## Features
 
 - Search for GIFs using keywords
