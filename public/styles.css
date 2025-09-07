@@ -158,7 +158,7 @@ button:active {
 /* gif grid */
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   margin-top: 2rem;
 }
@@ -256,27 +256,19 @@ button:active {
   justify-content: center;
 }
 
-/* base tag styling */
-.tag-base {
-  padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.tag-base:hover {
-  transform: translateY(-1px);
-}
-
 .tag {
   background: rgba(255,255,255,0.9);
   color: #475569;
+  padding: 0.6rem 1.2rem;
   border-radius: 25px;
+  font-size: 0.9rem;
   border: 1px solid rgba(148,163,184,0.25);
+  cursor: pointer;
+  transition: var(--transition-fast);
   backdrop-filter: blur(20px);
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 500;
 }
 
 .tag:hover {
@@ -284,6 +276,7 @@ button:active {
   border-color: rgba(99,102,241,0.3);
   box-shadow: 0 4px 15px rgba(99,102,241,0.1);
   color: #334155;
+  transform: translateY(-1px);
 }
 
 /* trending section */
@@ -296,11 +289,17 @@ button:active {
 .trending-tag {
   background: linear-gradient(135deg, #f8fafc, #e2e8f0);
   color: #64748b;
+  padding: 0.6rem 1.2rem;
   border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
   border: 1px solid rgba(148, 163, 184, 0.2);
   transition: var(--transition-slow);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .trending-tag::before {
