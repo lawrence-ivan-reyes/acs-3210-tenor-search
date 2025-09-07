@@ -29,7 +29,7 @@ app.set('views', './views');
 app.get('/', (req, res) => {
     if (req.query.term && req.query.term.trim()) {
         const term = req.query.term.trim();
-        Tenor.Search.Query(term, "10")
+        Tenor.Search.Query(term, "12")
             .then(response => {
                 const gifs = response;
                 res.render('home', { gifs })
