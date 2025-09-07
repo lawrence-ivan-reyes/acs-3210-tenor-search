@@ -4,6 +4,35 @@
   padding: 0;
 }
 
+:root {
+  --card-bg: white;
+  --card-radius: 16px;
+  --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --card-shadow-hover: 0 12px 40px rgba(0,0,0,0.12);
+  --transition-fast: all 0.2s ease;
+  --transition-slow: all 0.3s ease;
+  --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+  --gradient-hover: linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b);
+  --color-text-muted: #9ca3af;
+  --color-border: #f3f4f6;
+}
+
+/* util classes */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--card-shadow);
+}
+
+.hover-lift {
+  transition: var(--transition-fast);
+}
+
+.hover-lift:hover {
+  transform: translateY(-1px);
+}
+
 body {
   font-family: "Instrument Serif", serif;
   color: #1a1a1a;
@@ -57,10 +86,10 @@ form {
   display: flex;
   max-width: 500px;
   margin: 0 auto 4rem;
-  background: white;
-  border-radius: 16px;
-  border: 1px solid #f3f4f6;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--card-shadow);
   position: relative;
   overflow: hidden;
 }
@@ -85,7 +114,7 @@ input, button {
   padding: 1rem 1.5rem;
   border: none;
   font-family: inherit;
-  transition: all 0.2s ease;
+  transition: var(--transition-fast);
 }
 
 input {
@@ -100,7 +129,7 @@ input:focus {
 }
 
 input::placeholder {
-  color: #9ca3af;
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
@@ -108,7 +137,7 @@ button {
   font-size: 1.5rem;
   font-weight: 500;
   color: white;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+  background: var(--gradient-primary);
   border-radius: 0 12px 12px 0;
   cursor: pointer;
   white-space: nowrap;
@@ -119,7 +148,7 @@ button {
 button:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(99,102,241,0.4);
-  background: linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b);
+  background: var(--gradient-hover);
 }
 
 button:active {
@@ -135,17 +164,17 @@ button:active {
 }
 
 .gif-item {
-  background: white;
-  border-radius: 16px;
-  border: 1px solid #f3f4f6;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--card-shadow);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: var(--transition-slow);
 }
 
 .gif-item:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  box-shadow: var(--card-shadow-hover);
   border-color: #e5e7eb;
 }
 
@@ -160,10 +189,10 @@ button:active {
   text-align: center;
   margin-top: 4rem;
   padding: 4rem 2rem;
-  background: white;
-  border-radius: 16px;
-  border: 1px solid #f3f4f6;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--card-shadow);
 }
 
 .empty-state p {
@@ -213,7 +242,7 @@ button:active {
 }
 
 .suggestion-label, .trending-label {
-  color: #9ca3af;
+  color: var(--color-text-muted);
   font-size: 1rem;
   font-weight: 600;
   display: block;
@@ -227,19 +256,27 @@ button:active {
   justify-content: center;
 }
 
+/* base tag styling */
+.tag-base {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.tag-base:hover {
+  transform: translateY(-1px);
+}
+
 .tag {
   background: rgba(255,255,255,0.9);
   color: #475569;
-  padding: 0.6rem 1.2rem;
   border-radius: 25px;
-  font-size: 0.9rem;
   border: 1px solid rgba(148,163,184,0.25);
-  cursor: pointer;
-  transition: all 0.2s ease;
   backdrop-filter: blur(20px);
-  text-decoration: none;
-  display: inline-block;
-  font-weight: 500;
 }
 
 .tag:hover {
@@ -247,7 +284,6 @@ button:active {
   border-color: rgba(99,102,241,0.3);
   box-shadow: 0 4px 15px rgba(99,102,241,0.1);
   color: #334155;
-  transform: translateY(-1px);
 }
 
 /* trending section */
@@ -260,13 +296,9 @@ button:active {
 .trending-tag {
   background: linear-gradient(135deg, #f8fafc, #e2e8f0);
   color: #64748b;
-  padding: 0.6rem 1.2rem;
   border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.3s ease;
   border: 1px solid rgba(148, 163, 184, 0.2);
+  transition: var(--transition-slow);
   position: relative;
   overflow: hidden;
 }
