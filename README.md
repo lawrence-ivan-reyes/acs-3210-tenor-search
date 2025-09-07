@@ -4,6 +4,9 @@ A web application for searching and displaying GIFs using the [Tenor API](https:
 
 ![GIF Search Demo](./assets/demo-gif.gif)
 
+# Live Link
+[Check out the live site here](https://acs-3210-tenor-search.onrender.com/)
+
 ## Features
 
 - Search for GIFs using keywords
